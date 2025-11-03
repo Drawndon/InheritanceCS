@@ -16,16 +16,33 @@ namespace Academy
 			LastName = lastName;
 			FirstName = firstName;
 			Age = age;
-			Console.WriteLine($"HConstructor:{GetHashCode()}");
+			Console.WriteLine($"HConstructor:\t{GetHashCode()}");
+		}
+		public Human(Human other)
+		{
+			this.LastName = other.LastName;
+			this.FirstName = other.FirstName;
+			this.Age = other.Age;
+			Console.WriteLine($"CopyConstructor:\t{GetHashCode()}");
 		}
 		~Human()
 		{
-			Console.WriteLine($"HDestructor:{GetHashCode()}");
+			Console.WriteLine($"HDestructor:\t{GetHashCode()}");
 
 		}
-		public void Info()
+		public virtual void Info()
 		{
 			Console.WriteLine($"{LastName} {FirstName} {Age}");
+		}
+		public override string ToString()
+		{
+			return
+				//Split('.') разделяет 'Academy.Type' по точке на массив строк,
+				//и из этого массива мы берем последний элемент
+				$"{base.ToString().Split('.').Last()}:".PadRight(12, '.') +
+				$"{LastName.PadRight(16)}{FirstName.PadRight(10)}{Age.ToString().PadRight(5)}";
+			//PadRight() выравнивает строку по левому борту. От padding - набивание, добивает padright
+			//добивает справа пробелы
 		}
 	}
 }
