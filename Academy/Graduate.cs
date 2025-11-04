@@ -16,7 +16,7 @@ namespace Academy
 			string subject
 			):base(lastName, firstName, age, speciality, group, rating, attendance)
 		{
-			Subject = lastName;
+			Subject = subject;
 			Console.WriteLine($"GConstructor:\t{GetHashCode()}");
 		}
 		public Graduate(Student student, string subject):base(student)
@@ -31,6 +31,11 @@ namespace Academy
 		public override void Info()
 		{ base.Info();
 			Console.WriteLine(Subject);
+		}
+		public override string ToString()
+		{
+			return base.ToString() +
+				$"{Subject.PadRight(16)}";
 		}
 	}
 }

@@ -30,6 +30,11 @@ namespace Academy
 		{ base.Info();
 			Console.WriteLine($"{Speciality} {Experience}");
 		}
+		public override string ToString()
+		{
+			return base.ToString()+
+				$"{Speciality.PadRight(32)}{Experience.ToString().PadRight(16)}";
+		}
 
 	}
 }
