@@ -6,6 +6,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Xml.Linq;
 
 namespace Academy
 {
@@ -70,7 +72,21 @@ namespace Academy
 				Console.WriteLine(group[i]); //Выводит имя Solution, надо перегрузить ToString()
 				Console.WriteLine(delimiter);
 			}
+			Save(group, "group.txt");
 
+		}
+		static void Save(Human[] group, string filename)
+		{
+			StreamWriter writer = new StreamWriter(filename);
+
+			for (int i = 0; i < group.Length; i++)
+			{
+				writer.WriteLine(group[i].ToStringCSV()); //Вызываем свой метод преобразования с разделением через
+				//запятую
+			}
+
+			writer.Close();
+			System.Diagnostics.Process.Start("notepad", filename);
 		}
 	}
 }

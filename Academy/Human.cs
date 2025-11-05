@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,6 +44,12 @@ namespace Academy
 				$"{LastName.PadRight(16)}{FirstName.PadRight(10)}{Age.ToString().PadRight(5)}";
 			//PadRight() выравнивает строку по левому борту. От padding - набивание, добивает padright
 			//добивает справа пробелы
+		}
+		public virtual string ToStringCSV()
+		{
+			return
+				this.GetType().ToString().Split('.').Last() + ","
+				+ $"{LastName},{FirstName},{Age}";
 		}
 	}
 }

@@ -27,13 +27,18 @@ namespace Academy
 			Console.WriteLine($"TDestructor:\t{GetHashCode()}");
 		}
 		public override void Info()
-		{ base.Info();
+		{ 
+			base.Info();
 			Console.WriteLine($"{Speciality} {Experience}");
 		}
 		public override string ToString()
 		{
 			return base.ToString()+
-				$"{Speciality.PadRight(32)}{Experience.ToString().PadRight(16)}";
+				$"{Speciality.PadRight(24)}{Experience.ToString().PadRight(16)}";
+		}
+		public override string ToStringCSV()
+		{
+			return base.ToStringCSV() + $",{Speciality},{Experience}";
 		}
 
 	}
