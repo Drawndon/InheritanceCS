@@ -1,5 +1,6 @@
 ﻿//#define INHERITANCE_1
 //#define INHERITANCE_2
+//#define WRITE_TO_FILE
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,7 @@ namespace Academy
 
 #endif
 
+#if WRITE_TO_FILE
 			//Base-class pointers:
 			//Generalisation (Upcast - приведение дочернего объекта к базовому типу)
 			Human[] group =
@@ -72,7 +74,20 @@ namespace Academy
 				Console.WriteLine(group[i]); //Выводит имя Solution, надо перегрузить ToString()
 				Console.WriteLine(delimiter);
 			}
-			Save(group, "group.txt");
+			Save(group, "group.txt"); 
+#endif
+			Human[] group = Load("group.txt");
+			Print(group);
+
+		}
+		static void Print(Human[] group)
+		{
+			for (int i = 0; i < group.Length; i++)
+			{
+				Console.WriteLine(group[i]);
+				Console.WriteLine(delimiter);
+			}
+			Console.WriteLine();
 
 		}
 		static void Save(Human[] group, string filename)
@@ -87,6 +102,42 @@ namespace Academy
 
 			writer.Close();
 			System.Diagnostics.Process.Start("notepad", filename);
+		}
+		static Human[] Load(string filename)
+		{
+			List<Human> group = new List<Human>();
+			StreamReader reader = new StreamReader(filename);
+			try
+			{
+				while (!reader.EndOfStream)
+				{
+					string buffer = reader.ReadLine();
+					string[] values = buffer.Split(',');
+					//Human human = HumanFactory(values.First());
+					//human.Init(values);
+					//group.Add(human);
+					group.Add(HumanFactory(values[0]).Init(values)); //В одну строку
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
+			reader.Close();
+			return group.ToArray();
+		}
+		static Human HumanFactory(string type)
+		{
+			Human human = null;
+			switch(type) //C# switch понимает строки
+			{
+				case "Human": human = new Human("", "", 0); break;
+				case "Student": human = new Student("", "", 0, "", "", 0, 0); break ;
+				case "Graduate": human = new Graduate("", "", 0, "", "", 0, 0, ""); break;
+				case "Teacher": human = new Teacher("", "", 0, "", 0); break;
+			}
+			return human;
 		}
 	}
 }
