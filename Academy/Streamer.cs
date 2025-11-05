@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Academy
 {
-	internal class Streamer
+	internal class Streamer //Шаблонным
 	{
 		void SetDirectory()
 		{
