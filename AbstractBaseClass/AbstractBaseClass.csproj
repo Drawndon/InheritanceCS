@@ -44,9 +44,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Car.cs" />
+    <Compile Include="Circle.cs" />
+    <Compile Include="EquilateralTriangle.cs" />
     <Compile Include="GroundVehicle.cs" />
+    <Compile Include="IsoscalesTriangle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rectangle.cs" />
+    <Compile Include="Shape.cs" />
+    <Compile Include="Square.cs" />
+    <Compile Include="Triangle.cs" />
     <Compile Include="Vehicle.cs" />
   </ItemGroup>
   <ItemGroup>
