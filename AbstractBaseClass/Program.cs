@@ -10,6 +10,10 @@ namespace AbstractBaseClass
 	{
 		static void Main(string[] args)
 		{
+			Rectangle rect = new Rectangle(100, 200, 50, 50, 2);
+			rect.Info();
+
+
 		}
 	}
 }
