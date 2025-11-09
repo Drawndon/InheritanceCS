@@ -12,8 +12,8 @@ namespace AbstractGeometry
 	{
 		public static readonly int MIN_START_X = 10;
 		public static readonly int MIN_START_Y = 10;
-		public static readonly int MAX_START_X = 800;
-		public static readonly int MAX_START_Y = 600;
+		public static readonly int MAX_START_X = 1900;
+		public static readonly int MAX_START_Y = 1200;
 		public static readonly int MIN_LINE_WIDTH = 1;
 		public static readonly int MAX_LINE_WIDTH = 32;
 		public static readonly double MIN_SIZE = 20;
@@ -65,7 +65,7 @@ namespace AbstractGeometry
 		{
 			Console.WriteLine($"Площадь фигуры: {GetArea()}");
 			Console.WriteLine($"Периметр фигуры: {GetPerimeter()}");
-			Draw(e);
+			//Draw(e);
 		}
 
 
