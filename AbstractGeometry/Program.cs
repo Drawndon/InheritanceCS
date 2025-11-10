@@ -1,4 +1,5 @@
-﻿using System;
+﻿//#define ABSTRACT_1
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,7 @@ namespace AbstractGeometry
 			PaintEventArgs e = new PaintEventArgs(graphics, window_rect);
 			//e.Graphics.DrawRectangle(new Pen(Color.Red), 300, 300, 500, 300);
 
+#if ABSTRACT_1
 			Rectangle rectangle = new Rectangle(100, 40, 300, 250, 3, Color.Blue);
 			//rectangle.Info(e);
 			rectangle.Draw(e);
@@ -52,7 +54,22 @@ namespace AbstractGeometry
 			EquilateralTriangle equilateralTriangle = new EquilateralTriangle(50, 550, 200, 4, Color.Cyan);
 			//equilateralTriangle.Info(e);
 			equilateralTriangle.Draw(e);
-
+			//Например интерфейсы
+			//ICloneable, IServiceProvider  
+#endif
+			Shape[] shapes =
+			{
+				 new Rectangle(100, 40, 300, 250, 3, Color.Blue),
+				 new Square(70, 250, 300, 7, Color.Green),
+				 new Circle(100, 700, 150, 5, Color.Yellow),
+				 new IsoscelesTriangle(75, 150, 400, 200, 3, Color.Coral),
+				 new EquilateralTriangle(50, 550, 200, 4, Color.Cyan)
+			};
+			for (int i = 0; i < shapes.Length; i++)
+			{
+				//Если у объекта нет диагонали, то вывести
+				if(!(shapes[i] is IHaveDiagonal)) shapes[i].Draw(e);
+			}
 		}
 		[DllImport("kernel32.dll")]
 		public static extern IntPtr GetConsoleWindow();

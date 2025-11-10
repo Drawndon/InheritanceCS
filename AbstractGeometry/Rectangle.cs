@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace AbstractGeometry
 {
-	internal class Rectangle:Shape
+	internal class Rectangle:Shape, IHaveDiagonal //Обязались реализовать интерфейс IHaveDiagonal
 	{
 		double width;
 		double height;
@@ -34,11 +34,25 @@ namespace AbstractGeometry
 		}
 		public override double GetArea() => Width * Height;
 		public override double GetPerimeter() => 2 * (Width +  Height);
+
+		//Определили методы интерфейса
+		public double GetDiagonal() => Math.Sqrt(Math.Pow(Width, 2) + Math.Pow(Height, 2));
+		public void DrawDiagonal(System.Windows.Forms.PaintEventArgs e)
+		{
+			Pen pen = new Pen(Color, LineWidth);
+			e.Graphics.DrawLine
+				(
+				pen,
+				StartX, StartY,
+				StartX+(int)Width, StartY+(int)Height
+				);
+		}
 		public override void Draw(PaintEventArgs e)
 		{
 			Pen pen = new Pen(Color, LineWidth);
 			SolidBrush brush = new SolidBrush(Color);
 			e.Graphics.DrawRectangle(pen, StartX, StartY, (float)Width, (float)Height);
+			DrawDiagonal(e);
 			//e.Graphics.FillRectangle(brush, StartX, StartY, (float)Width, (float)Height);
 		}
 		public override void Info(PaintEventArgs e)
@@ -46,7 +60,9 @@ namespace AbstractGeometry
 			Console.WriteLine(this.GetType().ToString().Split('.').Last()+":");
 			Console.WriteLine($"Ширина: {Width}");
 			Console.WriteLine($"Высота: {Height}");
+			Console.WriteLine($"Диагональ: {GetDiagonal()}");
 			base.Info(e);
+
 		}
 	}
 }
