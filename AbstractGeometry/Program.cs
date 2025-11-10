@@ -25,13 +25,13 @@ namespace AbstractGeometry
 			PaintEventArgs e = new PaintEventArgs(graphics, window_rect);
 			//e.Graphics.DrawRectangle(new Pen(Color.Red), 300, 300, 500, 300);
 
-			Rectangle rectangle = new Rectangle(100, 40, 500, 500, 16, Color.Blue);
+			Rectangle rectangle = new Rectangle(100, 40, 300, 250, 3, Color.Blue);
 			//rectangle.Info(e);
 			rectangle.Draw(e);
 			//Для начала нарисуем в Main
 			//Console.WriteLine(delimeter);
 
-			Circle circle = new Circle(150, 120, 350, 10, Color.Yellow);
+			Circle circle = new Circle(100, 700, 150, 5, Color.Yellow);
 			//circle.Info(e);
 			circle.Draw(e);
 
@@ -43,13 +43,13 @@ namespace AbstractGeometry
 
 			//Console.WriteLine(delimeter);
 
-			IsoscelesTriangle isoscelesTriangle = new IsoscelesTriangle(70, 50, 450, 350, 8, Color.Coral);
+			IsoscelesTriangle isoscelesTriangle = new IsoscelesTriangle(75, 150, 400, 200, 3, Color.Coral);
 			//isoscelesTriangle.Info(e);
 			isoscelesTriangle.Draw(e);
 
 			//Console.WriteLine(delimeter);
 
-			EquilateralTriangle equilateralTriangle = new EquilateralTriangle(70, 350, 350, 5, Color.Cyan);
+			EquilateralTriangle equilateralTriangle = new EquilateralTriangle(50, 550, 200, 4, Color.Cyan);
 			//equilateralTriangle.Info(e);
 			equilateralTriangle.Draw(e);
 

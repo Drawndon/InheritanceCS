@@ -10,7 +10,9 @@ namespace AbstractGeometry
 {
 	internal class IsoscelesTriangle : Triangle
 	{
-		double trBase;
+		double trBase; //base - это ключевое слово, означающее базовый класс.
+		//Ключевые слова нельзя использовать для именования, но если перед ключевым словом поставить собаку,
+		//то его можно использовать для именования своих сущностей, т.е. нельзя base - @base можно
 		double trSide;
 		public double TrBase
 		{
@@ -41,13 +43,16 @@ namespace AbstractGeometry
 			{
 				new Point(StartX, StartY + (int)TrSide),
 				new Point(StartX + (int)TrBase, StartY + (int)TrSide),
-				new Point
-				(
-					StartX + (int)TrBase/2,
-					StartY + (int)TrSide - (int)GetHeight()
-					)
+				new Point(StartX + (int)TrBase/2, StartY + (int)TrSide - (int)GetHeight())
 			};
 			e.Graphics.DrawPolygon(pen, points);
+		}
+
+		public override void Info(PaintEventArgs e)
+		{
+			Console.WriteLine($"Основание: {TrBase}");
+			Console.WriteLine($"Сторона: {TrSide}");
+			base.Info(e);
 		}
 	}
 }

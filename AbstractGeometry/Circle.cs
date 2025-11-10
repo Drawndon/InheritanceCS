@@ -15,14 +15,8 @@ namespace AbstractBaseClass
 		double radius;
 		public double Radius
 		{
-			get
-			{
-				return radius;
-			}
-			set
-			{
-				radius = FilterSize(value);
-			}
+			get => radius;
+			set => radius = FilterSize(value);
 		}
 		public Circle
 			(
@@ -32,20 +26,15 @@ namespace AbstractBaseClass
 		{
 			Radius = radius;
 		}
-		public override double GetArea()
-		{
-			return Math.PI * Math.Pow(Radius, 2);
-		}
-		public override double GetPerimeter()
-		{
-			return 2 * Math.PI * Radius;
-		}
+		public override double GetArea() => Math.PI * Math.Pow(Radius, 2);
+
+		public override double GetPerimeter() => 2 * Math.PI * Radius;
 		public override void Draw(PaintEventArgs e)
 		{
-			Pen pen = new Pen(Color);
+			Pen pen = new Pen(Color, LineWidth);
 			SolidBrush brush = new SolidBrush(Color);
-			//e.Graphics.FillRectangle(brush, StartX, StartY, (float)Radius, (float)Radius);
-			e.Graphics.DrawEllipse(pen, StartX, StartY, (float)Radius, (float)Radius);
+			e.Graphics.FillEllipse(brush, StartX, StartY, (float)(2*Radius), (float)(2*Radius));
+			e.Graphics.DrawEllipse(pen, StartX, StartY, (float)(2 * Radius), (float)(2 * Radius));
 		}
 		public override void Info(PaintEventArgs e)
 		{
