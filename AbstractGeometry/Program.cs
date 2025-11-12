@@ -68,8 +68,21 @@ namespace AbstractGeometry
 			for (int i = 0; i < shapes.Length; i++)
 			{
 				//Если у объекта нет диагонали, то вывести
-				if(!(shapes[i] is IHaveDiagonal)) shapes[i].Draw(e);
+				//Оператор 'is' проверяет объект по признаку 'является' ('is-a' наследование) и 'способен' ('able' интерфейсы)
+				if (shapes[i] is IHaveDiameter) shapes[i].Draw(e);
 			}
+			
+			foreach (Shape shape in shapes)
+			{
+				//Оператор 'is' проверяет объект по признаку 'является' ('is-a' наследование) и 'способен' ('able' интерфейсы)
+				if (shape is IHaveDiagonal) shape.Draw(e);
+			}
+			foreach (Shape shape in shapes)
+			{
+				//Оператор 'is' проверяет объект по признаку 'является' ('is-a' наследование) и 'способен' ('able' интерфейсы)
+				if (shape is IHaveHeight) shape.Draw(e);
+			}
+
 		}
 		[DllImport("kernel32.dll")]
 		public static extern IntPtr GetConsoleWindow();

@@ -46,6 +46,13 @@ namespace AbstractGeometry
 				new Point(StartX + (int)TrBase/2, StartY + (int)TrSide - (int)GetHeight())
 			};
 			e.Graphics.DrawPolygon(pen, points);
+			DrawHeight(e);
+		}
+		public override void DrawHeight(PaintEventArgs e)
+		{
+			Pen pen = new Pen(Color, LineWidth);
+			e.Graphics.DrawLine(pen, StartX + (float)TrBase / 2, StartY + (float)TrSide,
+				StartX + (float)TrBase / 2, (float)(StartY + TrSide - GetHeight()));
 		}
 
 		public override void Info(PaintEventArgs e)

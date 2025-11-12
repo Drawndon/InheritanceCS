@@ -10,7 +10,7 @@ using System.Drawing.Configuration;
 
 namespace AbstractBaseClass
 {
-	internal class Circle : Shape
+	internal class Circle : Shape, IHaveDiameter
 	{
 		double radius;
 		public double Radius
@@ -26,6 +26,8 @@ namespace AbstractBaseClass
 		{
 			Radius = radius;
 		}
+		//public double GetRadius() => radius;
+		public double GetDiameter() => 2 * radius;// GetRadius();
 		public override double GetArea() => Math.PI * Math.Pow(Radius, 2);
 
 		public override double GetPerimeter() => 2 * Math.PI * Radius;
@@ -41,6 +43,7 @@ namespace AbstractBaseClass
 			Console.WriteLine(this.GetType().ToString().Split('.').Last() + ":");
 			Console.WriteLine($"Радиус круга: {Radius}");
 			base.Info(e);
+			Draw(e);
 		}
 	}
 }
