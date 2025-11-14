@@ -28,6 +28,18 @@ namespace AbstractBaseClass
 		}
 		//public double GetRadius() => radius;
 		public double GetDiameter() => 2 * radius;// GetRadius();
+		public void DrawDiameter(PaintEventArgs e)
+		{
+			Pen pen = new Pen(Color.Blue, LineWidth);
+			float centerX = StartX + (float)Radius;
+			float centerY = StartY + (float)Radius;
+
+			float startX = centerX - (float)Radius;
+			float startY = centerY;
+			float endX = centerX + (float)Radius;
+			float endY = centerY;
+			e.Graphics.DrawLine(pen, startX, startY, endX, endY);
+		}
 		public override double GetArea() => Math.PI * Math.Pow(Radius, 2);
 
 		public override double GetPerimeter() => 2 * Math.PI * Radius;
@@ -37,6 +49,7 @@ namespace AbstractBaseClass
 			SolidBrush brush = new SolidBrush(Color);
 			e.Graphics.FillEllipse(brush, StartX, StartY, (float)(2*Radius), (float)(2*Radius));
 			e.Graphics.DrawEllipse(pen, StartX, StartY, (float)(2 * Radius), (float)(2 * Radius));
+			DrawDiameter(e);
 		}
 		public override void Info(PaintEventArgs e)
 		{
